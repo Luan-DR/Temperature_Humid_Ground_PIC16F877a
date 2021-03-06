@@ -1,0 +1,83 @@
+ÀÄTemperatura_e_Umidade
+   ÀÄMAIN  0/181  Ram=4
+      ÃÄ@cinit1  (Inline)  Ram=0
+      ÃÄlcd_ini  0/61  Ram=2
+      ³  ÃÄ@delay_ms1  0/20  Ram=1
+      ³  ÃÄlcd_envia_nibble  0/39  Ram=1
+      ³  ÃÄ@delay_ms1  0/20  Ram=1
+      ³  ÃÄlcd_envia_nibble  0/39  Ram=1
+      ³  ÃÄ@const621  0/8  Ram=0
+      ³  ÀÄlcd_envia_byte  0/33  Ram=3
+      ³     ÃÄlcd_envia_nibble  0/39  Ram=1
+      ³     ÀÄlcd_envia_nibble  0/39  Ram=1
+      ÃÄ@delay_ms1  0/20  Ram=1
+      ÃÄds18b20_read  0/88  Ram=8
+      ³  ÃÄds18b20_start  0/38  Ram=1
+      ³  ³  ÃÄ@delay_us1  0/15  Ram=1
+      ³  ³  ÀÄ@delay_us1  0/15  Ram=1
+      ³  ÃÄds18b20_write_byte  0/59  Ram=3
+      ³  ³  ÀÄds18b20_write_bit  (Inline)  Ram=1
+      ³  ÃÄds18b20_write_byte  0/59  Ram=3
+      ³  ³  ÀÄ*
+      ³  ÃÄds18b20_read_byte  0/51  Ram=2
+      ³  ³  ÀÄds18b20_read_bit  (Inline)  Ram=1
+      ³  ÃÄds18b20_start  0/38  Ram=1
+      ³  ³  ÀÄ*
+      ³  ÃÄds18b20_write_byte  0/59  Ram=3
+      ³  ³  ÀÄ*
+      ³  ÃÄds18b20_write_byte  0/59  Ram=3
+      ³  ³  ÀÄ*
+      ³  ÃÄds18b20_read_byte  0/51  Ram=2
+      ³  ³  ÀÄ*
+      ³  ÀÄds18b20_read_byte  0/51  Ram=2
+      ³     ÀÄ*
+      ÃÄ@SITOF  0/39  Ram=2
+      ÃÄ@DIVFF  0/204  Ram=14
+      ÃÄ@PSTRINGCN7_637  0/87  Ram=5
+      ³  ÃÄlcd_escreve  0/55  Ram=1
+      ³  ³  ÃÄlcd_envia_byte  0/33  Ram=3
+      ³  ³  ³  ÀÄ*
+      ³  ³  ÃÄ@delay_ms1  0/20  Ram=1
+      ³  ³  ÃÄlcd_pos_xy  (Inline)  Ram=4
+      ³  ³  ³  ÀÄlcd_envia_byte  0/33  Ram=3
+      ³  ³  ³     ÀÄ*
+      ³  ³  ÃÄlcd_envia_byte  0/33  Ram=3
+      ³  ³  ³  ÀÄ*
+      ³  ³  ÀÄlcd_envia_byte  0/33  Ram=3
+      ³  ³     ÀÄ*
+      ³  ÀÄlcd_escreve  0/55  Ram=1
+      ³     ÀÄ*
+      ÃÄ@PRINTF_L32D_637FPFPF  0/341  Ram=13
+      ³  ÃÄ@MULFF  (Inline)  Ram=13
+      ³  ÃÄ@FTOSD  (Inline)  Ram=5
+      ³  ÃÄ@DIV3232  0/79  Ram=13
+      ³  ÃÄlcd_escreve  0/55  Ram=1
+      ³  ³  ÀÄ*
+      ³  ÃÄlcd_escreve  0/55  Ram=1
+      ³  ³  ÀÄ*
+      ³  ÃÄlcd_escreve  0/55  Ram=1
+      ³  ³  ÀÄ*
+      ³  ÃÄlcd_escreve  0/55  Ram=1
+      ³  ³  ÀÄ*
+      ³  ÀÄ@DIV3232  0/79  Ram=13
+      ÃÄlcd_escreve  0/55  Ram=1
+      ³  ÀÄ*
+      ÃÄ@PSTRINGC7_637  0/86  Ram=4
+      ³  ÃÄlcd_escreve  0/55  Ram=1
+      ³  ³  ÀÄ*
+      ³  ÀÄlcd_escreve  0/55  Ram=1
+      ³     ÀÄ*
+      ÃÄ@PSTRINGC7_637  0/86  Ram=4
+      ³  ÀÄ*
+      ÃÄ@MUL1616  0/23  Ram=5
+      ÃÄ@DIV1616  0/39  Ram=5
+      ÃÄ@PSTRINGCN7_637  0/87  Ram=5
+      ³  ÀÄ*
+      ÃÄ@PRINTF_LD_637  0/130  Ram=9
+      ³  ÀÄlcd_escreve  0/55  Ram=1
+      ³     ÀÄ*
+      ÃÄlcd_escreve  0/55  Ram=1
+      ³  ÀÄ*
+      ÃÄ@PSTRINGC7_637  0/86  Ram=4
+      ³  ÀÄ*
+      ÀÄ@delay_ms1  0/20  Ram=1

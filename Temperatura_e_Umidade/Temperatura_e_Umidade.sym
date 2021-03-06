@@ -1,0 +1,182 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004-005 @WRITE_PROGRAM_MEMORY8.P2
+008     PSP_DATA
+015     CCP_1_LOW
+015     CCP_1
+016     CCP_1_HIGH
+01B     CCP_2_LOW
+01B     CCP_2
+01C     CCP_2_HIGH
+020-021 raw_temp
+022-025 temp
+026-027 umid_a
+028-029 umid_d
+02A     lcd_ini.conta
+02A-02D @PRINTF_L32D_637FPFPF.P1
+02A-02B @SITOF.P2
+02A-02B ds18b20_read.raw_temp_value
+02A     @PSTRINGCN7_637.P1
+02A-02B @PRINTF_LD_637.P2
+02A-02B @MUL1616.P3
+02A     MAIN.@SCRATCH1
+02A     @PSTRINGC7_637.@SCRATCH1
+02B     lcd_ini.@SCRATCH1
+02B     MAIN.@SCRATCH2
+02B     @PSTRINGCN7_637.@SCRATCH1
+02B     @PSTRINGC7_637.@SCRATCH2
+02C-02D @MUL1616.P1
+02C-02D @DIV1616.P2
+02C     ds18b20_write_byte.value
+02C     ds18b20_start.@SCRATCH1
+02C     ds18b20_read.@SCRATCH1
+02C     MAIN.@SCRATCH3
+02C     @PSTRINGCN7_637.@SCRATCH2
+02C     @PSTRINGC7_637.@SCRATCH3
+02C     @PRINTF_LD_637.@SCRATCH1
+02D     ds18b20_write_byte.i
+02D     @delay_us1.P1
+02D     ds18b20_read.@SCRATCH2
+02D     MAIN.@SCRATCH4
+02D     @PSTRINGCN7_637.@SCRATCH3
+02D     @PSTRINGC7_637.@SCRATCH4
+02D     @PRINTF_LD_637.@SCRATCH2
+02E-031 @DIVFF.P1
+02E     @PRINTF_L32D_637FPFPF.P2
+02E-02F @DIV1616.P3
+02E     ds18b20_write_byte.@SCRATCH1
+02E     ds18b20_read.@SCRATCH3
+02E     @PSTRINGCN7_637.@SCRATCH4
+02E     @MUL1616.@SCRATCH1
+02E     @PRINTF_LD_637.@SCRATCH3
+02F     ds18b20_write_bit.value
+02F     ds18b20_read.@SCRATCH4
+02F     @PRINTF_L32D_637FPFPF.@SCRATCH1
+02F     @PRINTF_LD_637.@SCRATCH4
+030     ds18b20_read_byte.i
+030     ds18b20_read.@SCRATCH5
+030     @PRINTF_L32D_637FPFPF.@SCRATCH2
+030     @DIV1616.@SCRATCH1
+030     @PRINTF_LD_637.@SCRATCH5
+031     ds18b20_read_byte.value
+031     ds18b20_read.@SCRATCH6
+031     @PRINTF_L32D_637FPFPF.@SCRATCH3
+031     @PRINTF_LD_637.@SCRATCH6
+032.0   ds18b20_read_bit.value
+032-035 @DIVFF.P1
+032     @PRINTF_L32D_637FPFPF.@SCRATCH4
+032     @PRINTF_LD_637.@SCRATCH7
+033     @PRINTF_L32D_637FPFPF.@SCRATCH5
+034     @PRINTF_L32D_637FPFPF.@SCRATCH6
+035     @PRINTF_L32D_637FPFPF.@SCRATCH7
+036     @DIVFF.@SCRATCH1
+036     @PRINTF_L32D_637FPFPF.@SCRATCH8
+037-03A @MULFF.P1
+037-03A @FTOSD.P2
+037-03A @DIV3232.P3
+037     lcd_escreve.c
+037     @DIVFF.@SCRATCH2
+038     lcd_pos_xy.x
+038     @delay_ms1.P1
+038     @DIVFF.@SCRATCH3
+039     lcd_pos_xy.y
+039     @DIVFF.@SCRATCH4
+03A     lcd_pos_xy.endereco
+03A     @DIVFF.@SCRATCH5
+03B-03E @MULFF.P1
+03B-03E @DIV3232.P2
+03B     lcd_pos_xy.@SCRATCH1
+03B     @DIVFF.@SCRATCH6
+03B     @FTOSD.@SCRATCH1
+03C     lcd_envia_byte.endereco
+03D     lcd_envia_byte.dado
+03E     lcd_envia_byte.@SCRATCH1
+03F     lcd_envia_nibble.dado
+03F     @MULFF.@SCRATCH1
+03F     @DIV3232.@SCRATCH1
+040     @MULFF.@SCRATCH2
+040     @DIV3232.@SCRATCH2
+041     @MULFF.@SCRATCH3
+041     @DIV3232.@SCRATCH3
+042     @MULFF.@SCRATCH4
+042     @DIV3232.@SCRATCH4
+043     @MULFF.@SCRATCH5
+043     @DIV3232.@SCRATCH5
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+09C.6   C1OUT
+09C.7   C2OUT
+10D-10E @READ_PROGRAM_MEMORY8.P1
+10D-10E @WRITE_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+000004  INI_LCD.call
+000008  INI_LCD.data
+00000C  @const668.call
+000011  @const682.call
+000012  @const684.call
+00001C  @const691.call
+000021  @const694.call
+00002B  @delay_ms1
+00003F  lcd_envia_nibble
+000066  lcd_envia_byte
+000087  lcd_ini
+0000C4  @delay_us1
+0000D3  ds18b20_start
+0000F9  ds18b20_write_byte
+00010E  ds18b20_write_bit
+000134  ds18b20_read_byte
+00013A  ds18b20_read_bit
+000167  ds18b20_read
+0001BF  @SITOF
+0001E6  @DIVFF
+0002B2  lcd_escreve
+0002CC  lcd_pos_xy
+0002E9  @PSTRINGCN7_637
+000340  @DIV3232
+00038F  @PRINTF_L32D_637FPFPF
+0003A3  @MULFF
+000429  @FTOSD
+0004E4  @PSTRINGC7_637
+00053A  @MUL1616
+000551  @DIV1616
+000578  @PRINTF_LD_637
+0005FA  MAIN
+0005FA  @cinit1
+000604  @cinit2
+
+Project Directory:
+    C:\Users\Luan_\OneDrive\Documentos\IFMT\6° Semestre\Micro\testes\PIC\Temperatura_e_Umidade\
+
+Project Files:
+    Temperatura_e_Umidade.c                                 [04-fev-21 09:39  CRC=24AA1467]
+    ..\..\..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\16F877A.h [18-abr-14 16:56  CRC=4F277C97]
+    mod_lcd.c                                               [28-jan-21 13:25  CRC=178A4A02]
+
+Source signature=A2E62502
+
+Units:
+    Temperatura_e_Umidade (main)
+
+Compiler Settings:
+    Processor:      PIC16F877A
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   Temperatura_e_Umidade.xsym
+    Errors:      Temperatura_e_Umidade.err
+    Ext Symbols: Temperatura_e_Umidade.esym
+    INHX8:       Temperatura_e_Umidade.hex
+    Symbols:     Temperatura_e_Umidade.sym
+    List:        Temperatura_e_Umidade.lst
+    Debug/COFF:  Temperatura_e_Umidade.cof
+    Project:     Temperatura_e_Umidade.ccspjt
+    Call Tree:   Temperatura_e_Umidade.tre
+    Statistics:  Temperatura_e_Umidade.STA

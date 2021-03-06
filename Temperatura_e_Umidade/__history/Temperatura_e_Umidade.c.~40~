@@ -1,0 +1,121 @@
+//#include <Temperatura_e_Umidade.h>
+#include <16F877A.h>
+#device ADC=8
+
+#FUSES NOWDT                    //No Watch Dog Timer
+#FUSES NOBROWNOUT               //No brownout reset
+#FUSES NOLVP                    //No low voltage prgming, B3(PIC16) or B5(PIC18) used for I/O
+
+#use delay(crystal=20MHz)
+
+
+#ifndef lcd_enable                                                             
+   #define lcd_enable     pin_e1   
+   #define lcd_rs         pin_e2   
+   #define lcd_d4         pin_d4      
+   #define lcd_d5         pin_d5      
+   #define lcd_d6         pin_d6     
+   #define lcd_d7         pin_d7      
+#endif
+
+#include <mod_lcd.c>
+
+#define DS18B20_PIN PIN_B1 
+signed int16 raw_temp;
+float temp;
+int16 umid_a, umid_d;
+ 
+int1 ds18b20_start(){
+  output_low(DS18B20_PIN);                         // Send reset pulse to the DS18B20 sensor
+  output_drive(DS18B20_PIN);                       // Configure DS18B20_PIN pin as output
+  delay_us(500);                                   // Wait 500 us
+  output_float(DS18B20_PIN);                       // Configure DS18B20_PIN pin as input
+  delay_us(100);                                   //wait to read the DS18B20 sensor response
+  if (!input(DS18B20_PIN)) {
+    delay_us(400);                                 // Wait 400 us
+    return TRUE;                                   // DS18B20 sensor is present
+  }
+  return FALSE;
+}
+ 
+void ds18b20_write_bit(int1 value){
+  output_low(DS18B20_PIN);
+  output_drive(DS18B20_PIN);                       // Configure DS18B20_PIN pin as output
+  delay_us(2);                                     // Wait 2 us
+  output_bit(DS18B20_PIN, value);
+  delay_us(80);                                    // Wait 80 us
+  output_float(DS18B20_PIN);                       // Configure DS18B20_PIN pin as input
+  delay_us(2);                                     // Wait 2 us
+}
+ 
+void ds18b20_write_byte(int8 value){
+  int8 i;
+  for(i = 0; i < 8; i++)
+    ds18b20_write_bit(bit_test(value, i));
+}
+ 
+int1 ds18b20_read_bit(void) {
+  int1 value;
+  output_low(DS18B20_PIN);
+  output_drive(DS18B20_PIN);                       // Configure DS18B20_PIN pin as output
+  delay_us(2);
+  output_float(DS18B20_PIN);                       // Configure DS18B20_PIN pin as input
+  delay_us(5);                                     // Wait 5 us
+  value = input(DS18B20_PIN);
+  delay_us(100);                                   // Wait 100 us
+  return value;
+}
+ 
+int8 ds18b20_read_byte(void) {
+  int8 i, value = 0;
+  for(i = 0; i  < 8; i++)
+    shift_right(&value, 1, ds18b20_read_bit());
+  return value;
+}
+ 
+int1 ds18b20_read(int16 *raw_temp_value) {
+  if (!ds18b20_start())                     // Send start pulse
+    return FALSE;
+  ds18b20_write_byte(0xCC);                 // Send skip ROM command
+  ds18b20_write_byte(0x44);                 // Send start conversion command
+  while(ds18b20_read_byte() == 0);          // Wait for conversion complete
+  if (!ds18b20_start())                     // Send start pulse
+    return FALSE;                           // Return 0 if error
+  ds18b20_write_byte(0xCC);                 // Send skip ROM command
+  ds18b20_write_byte(0xBE);                 // Send read command
+  *raw_temp_value = ds18b20_read_byte();    // Read temperature LSB byte and store it on raw_temp_value LSB byte
+  *raw_temp_value |= (int16)(ds18b20_read_byte()) << 8;     // Read temperature MSB byte and store it on raw_temp_value MSB byte
+  return TRUE;                                // OK --> return 1
+}
+ 
+ 
+void main() {
+      setup_adc_ports(AN0);
+      setup_adc(ADC_CLOCK_INTERNAL);
+
+      lcd_ini();
+      delay_ms(50);
+     
+      //printf(lcd_escreve,"\n\fTemperatura");
+  while(TRUE) {
+    if(ds18b20_read(&raw_temp)) {
+      temp = (float)raw_temp / 16;               // Convert temperature raw value into degree Celsius (temp in °C = raw/16)
+      printf(lcd_escreve,"\fTemp %f", temp);
+      lcd_escreve(223);
+      lcd_escreve("C          ");
+      //lcd_escreve(37);                           
+    }
+    else {
+     // printf(lcd_escreve,"\n\fErro");
+    }
+    delay_us(10);
+    umid_a = read_adc();
+    umid_b = (umid_a*100)/255
+    printf(lcd_escreve,"\n\f Umid %ld", umid_d);
+    delay_ms(20);
+  }
+}
+ 
+      
+      
+      

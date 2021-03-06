@@ -1,0 +1,84 @@
+[PROJECT]
+Target=Temperatura_e_Umidade.hex
+Processor_Text=PIC16F877A
+CCSVerions=5.025
+Compiler=PCM
+CCSVersion=5.025
+[Target Data]
+FileList=Temperatura_e_Umidade.c
+[Directories]
+Include=
+[C:\Users\Luan_\OneDrive\Documentos\IFMT\6° Semestre\Micro\testes\PIC\Temperatura_e_Umidade]
+Type=4
+[mru-list]
+1=Temperatura_e_Umidade.c
+
+[ProjectLog]
+Days=5
+D1=31-01-2021
+D1_L=6
+D1_L1=[61502]Project Opened.
+D1_L2=[61619]Project Opened.
+D1_L3=[61657]Started Editing.
+D1_L4=[62469]Stopped Editing.
+D1_L5=[63286]Started Editing.
+D1_L6=[63608]Stopped Editing.
+D2=01-02-2021
+D2_L=18
+D2_L1=[71]Project Opened.
+D2_L2=[539]Started Editing.
+D2_L3=[3750]Stopped Editing.
+TotalEdit=88
+TotalDebug=0
+D2_E=71
+D2_D=0
+D2_L4=[3750]Project Closed.
+D2_L5=[30829]Project Opened.
+D2_L6=[30844]Started Editing.
+D2_L7=[30998]Stopped Editing.
+D2_L8=[30998]Project Closed.
+D2_L9=[76191]Project Opened.
+D2_L10=[76330]Started Editing.
+D2_L11=[77453]Stopped Editing.
+D2_L12=[81696]Started Editing.
+D2_L13=[81999]Stopped Editing.
+D2_L14=[82662]Started Editing.
+D2_L15=[82973]Stopped Editing.
+D2_L16=[85038]Project Closed.
+D2_L17=[85109]Project Opened.
+D2_L18=[85182]Project Closed.
+D3=02-02-2021
+D3_L=4
+D3_L1=[30696]Project Opened.
+D3_L2=[31754]Project Closed.
+D3_L3=[39795]Project Opened.
+D3_L4=[40964]Project Closed.
+D4=04-02-2021
+D4_L=10
+D4_L1=[33461]Project Opened.
+D4_L2=[33481]Started Editing.
+D4_L3=[33960]Stopped Editing.
+D4_L4=[33963]Started Editing.
+D4_L5=[34546]Stopped Editing.
+D4_E=17
+D4_D=0
+D4_L6=[34546]Project Closed.
+D4_L7=[34559]Project Opened.
+D4_L8=[34580]Started Editing.
+D4_L9=[34798]Stopped Editing.
+D4_L10=[34798]Project Closed.
+D5=05-03-2021
+D5_L=2
+D5_L1=[69826]Project Opened.
+D5_L2=[69855]Project Closed.
+
+[Opened Files]
+1=Temperatura_e_Umidade.c
+2=
+3=
+4=
+[Temperatura_e_Umidade.c]
+Type=4
+[Units]
+Count=1
+1=Temperatura_e_Umidade (main)
